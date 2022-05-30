@@ -32,4 +32,4 @@ def record():
     body,code = data.getrecord(request,None)
     return HTTPResponse(status=code, body=body)
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=8080, debug=True)

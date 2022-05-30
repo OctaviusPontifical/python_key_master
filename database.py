@@ -21,5 +21,6 @@ def selectdate (proceedure , inputedData ):
         cursor.callproc(proceedure,inputedData)
         return cursor.fetchone()
     except Exception as e:
+        print(e)
         return 1,e
 
