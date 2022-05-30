@@ -5,6 +5,7 @@ ENV DB_NAME=DbName
 ENV DB_USER=DbUser
 ENV DB_PASW=DbPassword
 ENV DB_HOST=DbIp_Dm
+ENV DB_PORT=DbPort
 ENV JWT_KEY=Skey
 RUN pip3 install -r requirements.txt
 CMD ["python","./main.py"]

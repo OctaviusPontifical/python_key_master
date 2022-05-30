@@ -23,6 +23,7 @@ def registration(request):
         body = '{"message":"login already exist"}'
         return body,400
     else :
+        print('Code: ',code,' Message: ',message)
         body = '{"message": "Server error !"}'
         return body,500
 
