@@ -10,6 +10,8 @@ DB_HOST = setting.get_param('DB_HOST')
 
 
 def connection ():
+    print('DB_NAME:',DB_NAME)
+    print('DB_HOST:',DB_HOST)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASW, host=DB_HOST)
     conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
     return conn
@@ -17,6 +19,7 @@ def connection ():
 def selectdate (proceedure , inputedData ):
     try:
         cursor = connection().cursor()
+        print("Connect exist !")
         #cursor.execute("select %s('%s');" % (proceedure,inputedData))
         cursor.callproc(proceedure,inputedData)
         return cursor.fetchone()
