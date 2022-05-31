@@ -18,7 +18,6 @@ def connection ():
 def selectdate (proceedure , inputedData ):
     try:
         cursor = connection().cursor()
-        print("Connect exist !")
         #cursor.execute("select %s('%s');" % (proceedure,inputedData))
         cursor.callproc(proceedure,inputedData)
         return cursor.fetchone()
