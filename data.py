@@ -1,13 +1,14 @@
 from authentication import authorization
 from database import selectdate
+from base64 import a85encode
 
 def addrecord(request):
     code,id = authorization(request.headers['Authorization'])
     if code==0:
         if 'id' in request.json:
-            code , message = selectdate('cu_pass',[request.json['id'],id,request.json['login'],request.json['password']])
+            code , message = selectdate('cu_pass',[request.json['id'],id,request.json['login'],to_code(request.json['password'])])
         else :
-            code , message = selectdate('cu_pass',[None,id,request.json['login'],request.json['password']])
+            code , message = selectdate('cu_pass',[None,id,request.json['login'],to_code(request.json['password'])])
         if code ==0:
             return None,200
         else:
@@ -37,3 +38,7 @@ def getrecord(request,id_record):
             return '{"message":"Server error!"}', 501
     else:
         return '{"message":"token is invalid"}', 401
+
+def to_code(text):
+    base = a85encode(bytes(text,'utf-8'))
+    return str(base,'utf-8')
