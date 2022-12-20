@@ -7,7 +7,7 @@ headers={'Access-Control-Allow-Origin': '*','Content-Type': 'application/json'}
 @post('/registr')
 def registr():
     body,code =authentication.registration(request)
-    return HTTPResponse(status=code, body=body)
+    return HTTPResponse(status=code, body=body, headers=headers)
 
 @post('/token')
 def token():
