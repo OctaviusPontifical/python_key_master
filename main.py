@@ -2,7 +2,7 @@ from bottle import route, run, get, post, request, HTTPResponse, delete, respons
 import authentication
 import data
 from bottle_cors_plugin import cors_plugin
-headers={'Access-Control-Allow-Origin': '*'}
+headers={'Access-Control-Allow-Origin': '*','Content-Type': 'application/json'}
 
 @post('/registr')
 def registr():
