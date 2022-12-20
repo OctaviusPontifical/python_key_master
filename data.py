@@ -1,6 +1,6 @@
 from authentication import authorization
 from database import selectdate
-from base64 import a85encode
+from base64 import  b64encode
 
 def addrecord(request):
     code,id = authorization(request.headers['Authorization'])
@@ -40,5 +40,5 @@ def getrecord(request,id_record):
         return '{"message":"token is invalid"}', 401
 
 def to_code(text):
-    base = a85encode(bytes(text,'utf-8'))
+    base = b64encode(bytes(text,'utf-8'))
     return str(base,'utf-8')
