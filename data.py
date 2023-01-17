@@ -6,9 +6,9 @@ def addrecord(request):
     code,id = authorization(request.headers['Authorization'])
     if code==0:
         if 'id' in request.json:
-            code , message = selectdate('cu_pass',[request.json['id'],id,request.json['login'],to_code(request.json['password'])])
+            code , message = selectdate('cu_pass',[request.json['id'],id,request.json['login'],to_code(request.json['password']),request.json["description"]])
         else :
-            code , message = selectdate('cu_pass',[None,id,request.json['login'],to_code(request.json['password'])])
+            code , message = selectdate('cu_pass',[None,id,request.json['login'],to_code(request.json['password']),request.json["description"]])
         if code ==0:
             return None,200
         else:

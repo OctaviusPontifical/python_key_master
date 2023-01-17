@@ -43,7 +43,7 @@ def create_token( user_id):
 def token (request):
     code,message,hash,salt,user_id = database.selectdate('get_user_data',[request.json['login']])
     if code ==2:
-        return '{"message":"login\password is valid"}',401
+        return '{"message":"login or password is valid"}',401
     elif code ==1:
         body = '{"message": "Server error !"}'
         return body, 500
@@ -53,7 +53,7 @@ def token (request):
             body='{"token":"%s"}' % (create_token(user_id))
             return body,200
         else :
-            return '{"message":"login\password is valid"}', 401
+            return '{"message":"login or password is valid"}', 401
 
 
 def authorization(token):
